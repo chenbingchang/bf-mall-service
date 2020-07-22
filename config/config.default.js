@@ -18,9 +18,16 @@ module.exports = appInfo => {
   // add your middleware config here
   config.middleware = [];
 
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+    security: {
+      // 关闭默认开启的csrf插件
+      csrf: {
+        // enable: false,
+      },
+    },
   };
 
   return {

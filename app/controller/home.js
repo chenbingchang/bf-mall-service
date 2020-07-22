@@ -7,6 +7,12 @@ class HomeController extends Controller {
     const { ctx } = this;
     ctx.body = 'hi, egg';
   }
+  /**
+   * 返回csrfToken，啥也不干
+   */
+  async csrfToken() {
+    this.ctx.body = '';
+  }
 }
 
 module.exports = HomeController;
