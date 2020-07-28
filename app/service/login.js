@@ -8,9 +8,13 @@ class LoginService extends Service {
     console.log('有效帐号、密码', account, pwd);
 
     return {
-      account,
-      name: '陈柄昌',
-      msg: '登录成功！',
+      subCode: '00100100',
+      msg: '',
+      data: {
+        account,
+        name: '陈柄昌',
+        msg: '登录成功！',
+      },
     };
   }
 }

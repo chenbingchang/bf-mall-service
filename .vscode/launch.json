@@ -5,13 +5,21 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch Egg",
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "windows": { "runtimeExecutable": "npm.cmd" },
+      "runtimeArgs": [ 
+        "run",
+        "debug",
       ],
-      "program": "${workspaceFolder}\\--title=egg-server-bf-mall-service"
+      "console": "integratedTerminal",
+      "protocol": "auto",
+      "restart": true,
+      "port": 9229,
+      "autoAttachChildProcesses": true
     }
   ]
 }
