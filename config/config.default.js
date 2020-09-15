@@ -3,6 +3,7 @@
 'use strict';
 
 const path = require('path');
+const subCode = require('./subCode');
 
 /**
  * @param {Egg.EggAppInfo} appInfo app info
@@ -18,7 +19,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1594601525909_5726';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'sayHello' ];
 
   // csrf
   config.security = {
@@ -36,15 +37,29 @@ module.exports = appInfo => {
   // 修改启动端口
   config.cluster = {
     listen: {
+      path: '',
       port: 7001,
+      hostname: '127.0.0.1',
     },
   };
+
+  // 静态资源
+  config.static = {
+    prefix: '/public/',
+    dir: [ path.join(appInfo.baseDir, 'public'), path.join(appInfo.baseDir, '..', 'upload') ],
+  };
+  // appInfo.baseDir是项目的根目录的绝对路径
 
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
-    // 上传图片的路劲
-    uploadImgUrl: path.join(__dirname, '..', '..', 'upload', 'images'),
+    subCode,
+    // 上传文件的目录
+    uploadDir: path.join(appInfo.baseDir, '..', 'upload'),
+    // 上传图片的目录，基于上传文件的目录
+    uploadImgDir: 'images',
+    // 临时目录，基于上传文件的目录
+    tempDir: 'temp',
   };
 
   return {
