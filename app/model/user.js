@@ -9,12 +9,33 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.STRING,
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER,
+    },
+    tell: {
+      type: DataTypes.STRING(11),
+      allowNull: false,
+      comment: '电话号码',
+    },
+    pwd: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      comment: '密码',
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
   }, {
     sequelize,
-    modelName: 'User',
+    freezeTableName: true, // 不用给模型加s
   });
   return User;
 };

@@ -65,7 +65,7 @@ module.exports = appInfo => {
       dialect: 'mysql', // 数据库类型
       host: '127.0.0.1', // 地址
       port: 3306, // 端口
-      database: 'test', // 数据库名称
+      database: 'bf_mall', // 数据库名称
       username: 'root', // 用户名
       password: '', // 密码，但是密码明文显示不好
     },
