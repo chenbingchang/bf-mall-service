@@ -67,7 +67,7 @@ module.exports = appInfo => {
       port: 3306, // 端口
       database: 'bf_mall', // 数据库名称
       username: 'root', // 用户名
-      password: '', // 密码，但是密码明文显示不好
+      password: '123456', // 密码，但是密码明文显示不好
     },
   };
 

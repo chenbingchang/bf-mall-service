@@ -4,6 +4,8 @@ const {
 } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
+  console.log('aa');
+  console.log('bb');
   class User extends Model {
 
   }
