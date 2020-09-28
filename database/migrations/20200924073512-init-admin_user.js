@@ -8,12 +8,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('user', {
+    await queryInterface.createTable('admin_user', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
         field: 'id',
       },
       tell: {
@@ -41,9 +41,8 @@ module.exports = {
         field: 'updated_at',
       },
     }, {
-      tableName: 'user',
+      tableName: 'admin_user',
       freezeTableName: true, // 不用给模型加s
-
     });
   },
 
@@ -54,6 +53,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('user');
+    await queryInterface.dropTable('admin_user');
   },
 };

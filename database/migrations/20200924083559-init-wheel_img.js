@@ -8,26 +8,33 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable('user', {
+    await queryInterface.createTable('wheel_img', {
       id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
         field: 'id',
       },
-      tell: {
-        type: Sequelize.STRING(11),
-        unique: true,
+      group: {
+        type: Sequelize.STRING(32),
         allowNull: false,
-        comment: '电话号码',
-        field: 'tell',
+        comment: '所属组',
+        field: 'group',
+        unique: 'group_with_order',
       },
-      pwd: {
-        type: Sequelize.TEXT,
+      url: {
+        type: Sequelize.STRING(200),
         allowNull: false,
-        comment: '密码',
-        field: 'pwd',
+        comment: '图片地址',
+        field: 'url',
+      },
+      order: {
+        type: Sequelize.INTEGER(2),
+        allowNull: false,
+        comment: '轮播顺序',
+        field: 'order',
+        unique: 'group_with_order',
       },
       // 创建时间和更新时间，migrate不会自动生成要手动加
       created_at: {
@@ -41,9 +48,8 @@ module.exports = {
         field: 'updated_at',
       },
     }, {
-      tableName: 'user',
+      tableName: 'wheel_img',
       freezeTableName: true, // 不用给模型加s
-
     });
   },
 
@@ -54,6 +60,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable('user');
+    await queryInterface.dropTable('wheel_img');
   },
 };

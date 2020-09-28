@@ -45,6 +45,7 @@ module.exports = appInfo => {
 
   // 静态资源
   config.static = {
+    // '/public/'开头的请求，会自动在下面的目录找查找
     prefix: '/public/',
     dir: [ path.join(appInfo.baseDir, 'public'), path.join(appInfo.baseDir, '..', 'upload') ],
   };
@@ -63,7 +64,7 @@ module.exports = appInfo => {
     // sequelize配置
     sequelize: {
       dialect: 'mysql', // 数据库类型
-      host: '127.0.0.1', // 地址
+      host: '47.113.127.116', // 地址
       port: 3306, // 端口
       database: 'bf_mall', // 数据库名称
       username: 'root', // 用户名

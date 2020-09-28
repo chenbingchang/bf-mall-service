@@ -3,12 +3,12 @@
 module.exports = app => {
   const Sequelize = app.Sequelize;
 
-  const User = app.model.define('User', {
+  const AdminUser = app.model.define('AdminUser', {
     id: {
+      type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER,
       field: 'id',
     },
     tell: {
@@ -25,9 +25,9 @@ module.exports = app => {
       field: 'pwd',
     },
   }, {
-    tableName: 'user',
+    tableName: 'admin_user',
     freezeTableName: true, // 不用给模型加s
   });
 
-  return User;
+  return AdminUser;
 };

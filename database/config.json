@@ -3,21 +3,24 @@
     "username": "root",
     "password": "123456",
     "database": "bf_mall",
-    "host": "127.0.0.1",
+    "host": "47.113.127.116",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "123456",
     "database": "bf_mall",
-    "host": "127.0.0.1",
+    "host": "47.113.127.116",
+    "port": 3306,
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "123456",
     "database": "bf_mall",
-    "host": "127.0.0.1",
+    "host": "47.113.127.116",
+    "port": 3306,
     "dialect": "mysql"
   }
 }
