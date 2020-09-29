@@ -3,56 +3,36 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
-     * 产品表(SPU)
+     * 属性名表
      *
      */
-    await queryInterface.createTable('product', {
+    await queryInterface.createTable('attr_name', {
       id: {
-        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER,
         field: 'id',
       },
       name: {
         type: Sequelize.STRING(50),
         allowNull: false,
-        comment: '商品名称',
+        comment: '属性名',
         field: 'name',
+        unique: 'parent_name_category',
       },
-      title: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-        comment: '商品标题',
-        field: 'title',
-      },
-      poster: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-        comment: '封面图',
-        field: 'poster',
-      },
-      wheel: {
-        type: Sequelize.TEXT,
-        comment: '详情轮播图[{type: 1, order: 1, url: ""}],type:1-图片；2-视频；',
-        field: 'wheel',
-      },
-      desc: {
-        type: Sequelize.STRING(100),
-        allowNull: false,
-        comment: '商品详情页描述',
-        field: 'desc',
-      },
-      detail: {
-        type: Sequelize.TEXT,
-        comment: '商品详情，富文本',
-        field: 'detail',
+      weight: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        comment: '权重，越大的排在前面，默认0',
+        field: 'weight',
       },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        comment: '商品所属分类ID',
+        comment: '属性名所属分类ID',
         field: 'category_id',
+        unique: 'parent_name_category',
         references: {
           // 这是对另一个模型的参考
           model: {
@@ -61,6 +41,12 @@ module.exports = {
           // 这是引用模型的列名
           key: 'id',
         },
+      },
+      parentId: {
+        type: Sequelize.INTEGER,
+        comment: '父id',
+        field: 'parent_id',
+        unique: 'parent_name_category',
       },
       // 创建时间和更新时间，migrate不会自动生成要手动加
       createdAt: {
@@ -74,12 +60,12 @@ module.exports = {
         field: 'updated_at',
       },
     }, {
-      tableName: 'product',
+      tableName: 'attr_name',
       freezeTableName: true, // 不用给模型加s
     });
   },
 
   down: async queryInterface => {
-    await queryInterface.dropTable('product');
+    await queryInterface.dropTable('attr_name');
   },
 };

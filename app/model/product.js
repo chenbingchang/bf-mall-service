@@ -52,7 +52,9 @@ module.exports = app => {
       field: 'category_id',
       references: {
         // 这是对另一个模型的参考
-        model: 'Category',
+        model: {
+          tableName: 'category',
+        },
         // 这是引用模型的列名
         key: 'id',
       },

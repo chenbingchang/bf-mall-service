@@ -3,10 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
-     * Add altering commands here.
+     * 分类表
      *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
     await queryInterface.createTable('category', {
       id: {
@@ -27,20 +25,24 @@ module.exports = {
         comment: '父类id',
         field: 'parent_id',
       },
+      // 创建时间和更新时间，migrate不会自动生成要手动加
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        field: 'created_at',
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        field: 'updated_at',
+      },
     }, {
       tableName: 'category',
       freezeTableName: true, // 不用给模型加s
-      timestamps: false, // 不用自动生成创建、更新时间
     });
   },
 
   down: async queryInterface => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
     await queryInterface.dropTable('category');
   },
 };

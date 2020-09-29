@@ -17,5 +17,6 @@ module.exports = app => {
   router.post('/upload/img', controller.upload.uploadImg);
   // 新增用户
   router.post('/user/add', controller.user.add);
-
+  // 新增管理员
+  router.post('/adminUser/add', controller.adminUser.add);
 };

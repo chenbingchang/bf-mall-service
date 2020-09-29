@@ -3,29 +3,38 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
-     * 后台管理用户表
+     * 属性值表
      *
      */
-    await queryInterface.createTable('admin_user', {
+    await queryInterface.createTable('attr_value', {
       id: {
-        type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        type: Sequelize.INTEGER,
         field: 'id',
       },
-      tell: {
-        type: Sequelize.STRING(11),
-        unique: true,
+      value: {
+        type: Sequelize.STRING(50),
         allowNull: false,
-        comment: '电话号码',
-        field: 'tell',
+        comment: '属性值',
+        field: 'name',
+        unique: 'name_value',
       },
-      pwd: {
-        type: Sequelize.TEXT,
+      attrNameId: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        comment: '密码',
-        field: 'pwd',
+        comment: '所属属性名id',
+        field: 'attr_name_id',
+        unique: 'name_value',
+        references: {
+          // 这是对另一个模型的参考
+          model: {
+            tableName: 'attr_name',
+          },
+          // 这是引用模型的列名
+          key: 'id',
+        },
       },
       // 创建时间和更新时间，migrate不会自动生成要手动加
       createdAt: {
@@ -39,12 +48,12 @@ module.exports = {
         field: 'updated_at',
       },
     }, {
-      tableName: 'admin_user',
+      tableName: 'attr_value',
       freezeTableName: true, // 不用给模型加s
     });
   },
 
   down: async queryInterface => {
-    await queryInterface.dropTable('admin_user');
+    await queryInterface.dropTable('attr_value');
   },
 };

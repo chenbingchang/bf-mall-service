@@ -3,10 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     /**
-     * Add altering commands here.
+     * 用户表
      *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
     await queryInterface.createTable('user', {
       id: {
@@ -30,12 +28,12 @@ module.exports = {
         field: 'pwd',
       },
       // 创建时间和更新时间，migrate不会自动生成要手动加
-      created_at: {
+      createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
         field: 'created_at',
       },
-      updated_at: {
+      updatedAt: {
         type: Sequelize.DATE,
         allowNull: false,
         field: 'updated_at',
@@ -48,12 +46,6 @@ module.exports = {
   },
 
   down: async queryInterface => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
     await queryInterface.dropTable('user');
   },
 };
