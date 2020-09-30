@@ -14,6 +14,9 @@ class AdminLoginController extends Controller {
     ctx.status = 200;
     ctx.body = result;
   }
+  async add() {
+    // this.service
+  }
 }
 
 module.exports = AdminLoginController;

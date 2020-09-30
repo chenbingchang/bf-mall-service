@@ -6,6 +6,15 @@ const Controller = require('egg').Controller;
  * 管理员
  */
 class AdminUser extends Controller {
+  async login() {
+    const { ctx, service } = this;
+    const body = ctx.request.body;
+    const result = await service.adminLogin.login(body.account, body.pwd);
+
+    ctx.status = 200;
+    ctx.body = result;
+  }
+
   // 新增管理员
   async add() {
     const { ctx } = this;

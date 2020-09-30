@@ -12,11 +12,13 @@ module.exports = app => {
   // 随意的请求，只是为了第一次能够获得csrfToken
   router.get('/csrfToken', controller.home.csrfToken);
   // 后台管理登录
-  router.post('/manage/login', controller.adminLogin.login);
+  router.post('/manage/login', controller.adminUser.login);
   // 上传图片
   router.post('/upload/img', controller.upload.uploadImg);
   // 新增用户
   router.post('/user/add', controller.user.add);
   // 新增管理员
   router.post('/adminUser/add', controller.adminUser.add);
+  // 加密密钥
+  router.get('/secrect/aes', controller.secrect.aes);
 };

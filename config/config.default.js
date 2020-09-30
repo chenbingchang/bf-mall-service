@@ -70,6 +70,21 @@ module.exports = appInfo => {
       username: 'root', // 用户名
       password: '123456', // 密码，但是密码明文显示不好
     },
+    // 数据库AES加密密钥、矢量
+    dbAes: {
+      key: '5feN8426Ui%knl51',
+      iv: 'oe5Niyln843$a5H0',
+    },
+    // 前端AES加密密钥、矢量
+    webAes: {
+      key: 'd4H#3fe3nG6%5Gg^',
+      iv: 'jbM3Nu.HeJOP7[nh',
+    },
+    // 响应内容的AES加密
+    resAes: {
+      key: 't@hef2un3cItiNon',
+      iv: 'i#s2su1TceN36s4s',
+    },
   };
 
   return {
